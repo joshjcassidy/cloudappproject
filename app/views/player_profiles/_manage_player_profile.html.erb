@@ -1,0 +1,16 @@
+<div class="border">
+    <h3><%= player_profile.playerTag %></br></h3>
+    <p><%= player_profile.firstName %> <%= player_profile.lastName %></p>
+    
+    <h3>See most recent tweet</h3>
+
+    <% client = Twitter::REST::Client.new do |config| %>
+        <% config.consumer_key        = "NoSQIiHJUVYg5VseZAWEhUBrS" %>
+        <% config.consumer_secret     = "XVoumcEH0f21M9JZKkpKaJX7P6vdZcP8eO6v4NfjC9e9NoQV9V" %>
+        <% config.access_token        = "513730483-5oRBjvhWcgyvPNyOUFtrCie0IC9BTVBKwG9AlQhS" %>
+        <% config.access_token_secret = "sbRzMKNePlj3OlSINQDZJQVxBhFViHHuTAt59jId6few6" %>
+    <% end %>
+
+    <%= client.user_timeline(player_profile.twitterHandle).first.text %>
+    <%= link_to "View Profile", player_profile_path(player_profile) %>
+</div>

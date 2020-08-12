@@ -1,0 +1,6 @@
+<div class="border">
+    <h3><%= player_profile.playerTag %></br></h3>
+    <p><%= player_profile.firstName %> <%= player_profile.lastName %></p>
+    <p><%= player_profile.country.name %></p>
+    <%= link_to "View Profile", player_profile_path(player_profile) %>
+</div>

@@ -1,0 +1,49 @@
+<%= form_for @player_profile, url: player_profiles_path(@player_profile.id) do |f| %>
+    <h2>Profile Details</h2>
+    <div class="field">
+        <%= f.label :playerTag, 'Player Tag' %><br />
+        <%= f.text_field :playerTag %>
+    </div>
+
+    <div class="field">
+        <%= f.label :firstName, 'First Name' %><br />
+        <%= f.text_field :firstName %>
+    </div>
+
+    <div class="field">
+        <%= f.label :lastName, 'Last Name' %><br />
+        <%= f.text_field :lastName %>
+    </div>
+
+    <div class="field">
+        <%= f.label :bio, 'Player Bio' %><br />
+        <%= f.text_area :bio %>
+    </div>
+
+    <div class="field">
+        <%= f.label :dob, 'Date of Birth' %><br />
+        <%= f.date_select :dob, start_year: Time.now.year, end_year: 1900 %>
+    </div>
+
+    <div class="field">
+        <%= f.label :country_id, 'Country of Residence' %><br />
+        <% options = options_from_collection_for_select(Country.all, 'id', 'name') %>
+        <%= f.select :country_id,  options %>
+    </div>
+
+    <div class="field">
+        <%= f.label :twitterHandle, 'Twitter Handle' %><br />
+        <%= f.text_field :twitterHandle %>
+    </div>
+
+    <div class="field">
+        <%= f.label :twitchHandle, 'Twitch Handle' %><br />
+        <%= f.text_field :twitchHandle %>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  playerTag: MyString
+  bio: MyText
+  firstName: MyString
+  lastName: MyString
+  dob: 2020-08-07
+  country: one
+  hasSponsor: false
+
+two:
+  user: two
+  playerTag: MyString
+  bio: MyText
+  firstName: MyString
+  lastName: MyString
+  dob: 2020-08-07
+  country: two
+  hasSponsor: false

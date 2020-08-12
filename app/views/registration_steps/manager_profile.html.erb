@@ -1,0 +1,50 @@
+<%= form_for @user, url: wizard_path do |f| %>
+    <h2>Team Details</h2>
+    <div class="field">
+        <%= f.label :teamName %><br />
+        <%= f.text_field : %>
+    </div>
+
+    <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+    </div>
+
+    <div class="field">
+        <%= f.label :managerFName, 'Manager\'s first name' %><br />
+        <%= f.text_field :managerFName %>
+    </div>
+
+    <div class="field">
+        <%= f.label :managerLName, 'Manager\'s surname' %><br />
+        <%= f.text_field :managerLName %>
+    </div>
+
+    <div class="field">
+        <%= f.label :sponsorsAndPartners %><br />
+        <%= f.text_area :sponsorsAndPartners %>
+    </div>
+
+    <div class="field">
+        <%= f.label :country_id, 'Country' %><br />
+        <% options = options_from_collection_for_select(@list, 'name') %>
+        <%= f.select :country_id,  options %>  
+    </div>
+
+    <div class="field">
+        <%= f.label :twitterHandle %><br />
+        <%= f.text_field :twitterHandle %>
+    </div>
+
+    <div class="field">
+        <%= f.label :siteUrl %><br />
+        <%= f.text_field :siteUrl %>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions">
+        <%= f.submit "Save and Finish" %>
+    </div>
+
+    <% end %>

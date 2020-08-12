@@ -1,0 +1,49 @@
+<%= form_for @user, url: wizard_path do |f| %>
+    <h2>Profile Details</h2>
+    <div class="field">
+        <%= f.label :playerTag %><br />
+        <%= f.text_field :playerTag %>
+    </div>
+
+    <div class="field">
+        <%= f.label :firstName%><br />
+        <%= f.text_field :firstName %>
+    </div>
+
+    <div class="field">
+        <%= f.label :lastName%><br />
+        <%= f.text_field :lastName %>
+    </div>
+
+    <div class="field">
+        <%= f.label :bio%><br />
+        <%= f.text_area :bio %>
+    </div>
+
+    <div class="field">
+        <%= f.label :dob, 'Date of Birth' %><br />
+        <%= f.date_select :dob %>
+    </div>
+
+    <div class="field">
+        <%= f.label :country_id%><br />
+        <% options = options_from_collection_for_select(@list, 'name') %>
+        <%= f.select :country_id,  options %>
+    </div>
+
+    <div class="field">
+        <%= f.label :twitterHandle %><br />
+        <%= f.text_field :twitterHandle %>
+    </div>
+
+    <div class="field">
+        <%= f.label :twitchHandle %><br />
+        <%= f.text_field :twitchHandle %>
+    </div>
+
+    <%= f.hidden_field :user_id, value: @user.id %>
+
+    <div class="actions">
+        <%= f.submit "Save and Finish" %>
+    </div>
+<% end %>

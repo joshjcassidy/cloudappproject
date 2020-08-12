@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+    <% if current_user.managerCheck == true %>
+        <%= render 'player_profiles/manage' %>
+    <% else %>
+        <%= render 'player_profiles/player_home' %>
+    <% end %>
+<% else %>
+    <%= render 'unlogged' %>
+<% end %>
+
+

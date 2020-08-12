@@ -1,0 +1,26 @@
+<div class="border-bottom float-none">
+    <h1><%= @manager_profile.teamName %></h1>
+    <div class="text-left">
+    <p>Managed by: <%= @manager_profile.managerFName %> <%= @manager_profile.managerLName %></p>
+    <p>Founded in: <%= @manager_profile.country.name %></p>
+    </div>
+</div>
+
+<div class="text-right">
+    <p>Email: <%= @manager_profile.user.email %></p>
+    <a href="https://twitter.com/<%= @manager_profile.twitterHandle %>">
+        <p>Twitter: <%= @manager_profile.twitterHandle %></p>
+    </a>
+</div>
+<div>
+    <h6>Team Description</h6>
+    <div class="border w-50">
+        <%= @manager_profile.description %>
+    </div>
+</div>
+<div>
+    <h6>Sponsors and Partners</h6>
+    <div class="border w-50">
+        <%= @manager_profile.sponsorsAndPartners %>
+    </div>
+</div>

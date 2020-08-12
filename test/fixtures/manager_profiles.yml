@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  teamName: MyString
+  description: MyText
+  country: one
+  managerFName: MyString
+  managerLName: MyString
+  sponsorsAndPartners: MyText
+  lookingForPlayers: false
+
+two:
+  user: two
+  teamName: MyString
+  description: MyText
+  country: two
+  managerFName: MyString
+  managerLName: MyString
+  sponsorsAndPartners: MyText
+  lookingForPlayers: false

@@ -1,0 +1,68 @@
+<div class="border-bottom float-none">
+    <h1><%= @player_profile.playerTag %></h1>
+    <div class="text-left">
+        <p><%= @player_profile.firstName %> <%= @player_profile.lastName %></p>
+    </div>
+</div>
+
+<% if current_user.managerCheck == true %>
+    <% if @player_profile.hasSponsor == true && @player_profile.manager_profile.user_id != current_user.id %>
+        <h5>This player is already part of a team</h5>
+    <% elsif @player_profile.hasSponsor == true && @player_profile.manager_profile.user_id == current_user.id %>
+        <%= form_for @player_profile, url: player_profile_path(@player_profile), method: :patch do |f| %>
+                
+            <%= f.hidden_field :manager_profile_id, value: nil %>
+
+            <%= f.hidden_field :hasSponsor, value: false %>
+            
+            <div class="actions">
+                <%= f.submit "Remove Player" %>
+            </div>
+        <% end %>
+    <% else %>
+        <%= form_for @player_profile, url: player_profile_path(@player_profile), method: :patch do |f| %>
+            
+            <%= f.hidden_field :manager_profile_id, value: current_user.manager_profile.id %>
+
+            <%= f.hidden_field :hasSponsor, value: true %>
+            
+            <div class="actions">
+                <%= f.submit "Add Player" %>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>
+
+
+<div class="text-right">
+    <p>Email: <%= @player_profile.user.email %></p>
+    <a href="https://twitter.com/<%= @player_profile.twitterHandle %>">
+        <p>Twitter: <%= @player_profile.twitterHandle %></p>
+    </a>
+    <a href="https://twitch.tv/<%= @player_profile.twitchHandle %>">
+        <p>Twitch: <%= @player_profile.twitchHandle %></p>
+    </a>
+</div>
+<div>
+    <h6>Bio</h6>
+    <div class="border w-50 h-100">
+        <%= @player_profile.bio %>
+    </div>
+</div>
+<p>Date of Birth: <%= @player_profile.dob %></p>
+<p class="text-capitalize"><%= @player_profile.country.name %></p>
+
+<% require 'twitter' %>
+
+<% client = Twitter::REST::Client.new do |config| %>
+    <% config.consumer_key        = "NoSQIiHJUVYg5VseZAWEhUBrS" %>
+    <% config.consumer_secret     = "XVoumcEH0f21M9JZKkpKaJX7P6vdZcP8eO6v4NfjC9e9NoQV9V" %>
+    <% config.access_token        = "513730483-5oRBjvhWcgyvPNyOUFtrCie0IC9BTVBKwG9AlQhS" %>
+    <% config.access_token_secret = "sbRzMKNePlj3OlSINQDZJQVxBhFViHHuTAt59jId6few6" %>
+<% end %>
+
+<h3>Most recent tweet: </h3>
+<div class="border">
+    <%= client.user_timeline(@player_profile.twitterHandle).first.text %>
+</div>
+

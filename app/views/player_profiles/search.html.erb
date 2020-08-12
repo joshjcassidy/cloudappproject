@@ -1,0 +1,7 @@
+<h1>Search Results</h1>
+
+<% if @player_profile.present? %>
+  <%= render @player_profile %>
+<% else %>
+  <p>There are no posts containing the term(s).</p>
+<% end %>
